@@ -1,0 +1,89 @@
+﻿@model EventManagementSystem.ViewModels.RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- Custom CSS -->
+<style>
+    body {
+        /* Online background image */
+        background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .register-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        width: 100%;
+        max-width: 450px;
+    }
+
+        .register-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+    .btn-primary, .btn-success {
+        width: 100%;
+    }
+
+    .btn-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #333;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+    .text-danger {
+        text-align: left;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="register-card">
+    <h2>EVENT MANAGEMENT SYSTEM</h2>
+
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="FullName" class="form-label">Full Name</label>
+            <input asp-for="FullName" class="form-control" placeholder="Enter your full name" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a asp-action="Login" class="btn btn-link">Already have an account? Login</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

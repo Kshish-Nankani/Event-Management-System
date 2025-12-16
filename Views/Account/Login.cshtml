@@ -1,0 +1,77 @@
+﻿@model EventManagementSystem.ViewModels.LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!-- Custom CSS -->
+<style>
+    body {
+        /* Online background image */
+        background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .login-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        width: 100%;
+        max-width: 400px;
+    }
+
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+    .btn-success {
+        width: 100%;
+    }
+
+    .btn-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #333;
+    }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+    .text-danger {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="login-card">
+    <h2>EVENT MANAGEMENT SYSTEM</h2>
+
+    <form asp-action="Login" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+        </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Login</button>
+        <a asp-action="Register" class="btn btn-link">Don't have an account? Register</a>
+    </form>
+</div>

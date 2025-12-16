@@ -1,0 +1,114 @@
+﻿@model List<EventManagementSystem.Models.Registration>
+
+@{
+    ViewData["Title"] = "My Registrations";
+}
+
+<!-- Custom CSS -->
+<style>
+    body {
+        background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+    }
+
+    .registrations-wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 80px 20px; /* space for navbar */
+    }
+
+    .registrations-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        width: 100%;
+        max-width: 900px;
+    }
+
+        .registrations-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+    .table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #198754;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .table tr:hover {
+            background-color: rgba(25, 135, 84, 0.1);
+        }
+
+    .alert-info, p {
+        text-align: center;
+        font-size: 16px;
+        color: #555;
+    }
+
+ 
+    
+
+    
+</style>
+
+<div class="registrations-wrapper">
+    <div class="registrations-card">
+        <h2>My Registrations</h2>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                You have not registered for any events yet.
+            </div>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Event Title</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Registered On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var r in Model)
+                    {
+                        <tr>
+                            <td>@r.Event.Title</td>
+                            <td>@r.Event.EventDate.ToString("dd MMM yyyy")</td>
+                            <td>@r.Event.Location</td>
+                            <td>@r.RegisteredOn.ToString("dd MMM yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
